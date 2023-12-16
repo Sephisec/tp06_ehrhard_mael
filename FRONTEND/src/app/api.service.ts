@@ -11,13 +11,12 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   public loginClient(login: string, password: string): Observable<Client> {
-    let data: String;
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
-    data = 'login=' + login + '&password=' + password;
+    const data = 'login=' + login + '&password=' + password;
     return this.http.post<Client>(
       environment.backendLoginClient,
       data,

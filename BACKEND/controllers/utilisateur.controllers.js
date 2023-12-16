@@ -64,6 +64,7 @@ exports.login = (req, res) => {
         }
         else
         {
+            res.status(400).send("Invalid login/password");
         }
     }
 };

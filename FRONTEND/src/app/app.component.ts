@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Produit } from './models/produit';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

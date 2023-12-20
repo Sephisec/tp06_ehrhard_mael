@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Observable} from "rxjs";
+import {BehaviorSubject, debounceTime, distinctUntilChanged, Observable, switchMap} from "rxjs";
 import {Produit} from "../models/produit";
 import {ApiService} from "../api.service";
 
@@ -11,14 +11,18 @@ import {ApiService} from "../api.service";
 export class CatalogueComponent {
   @Input() nom: string;
   @Input() prenom: string;
-  produits$: Observable<Array<Produit>>;
-  searchTerm: string;
+  products$: Observable<Array<Produit>>;
+  searchTerm$ = new BehaviorSubject<string>('');
 
   constructor(private readonly apiService: ApiService) {
-    this.filterCatalogue("");
+    this.products$ = this.searchTerm$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(search => this.apiService.filterCatalogue(search))
+    );
   }
 
-  filterCatalogue(filter: string) {
-    this.produits$ = this.apiService.filterCatalogue(filter);
+  onInputChange(value: string) {
+    this.searchTerm$.next(value);
   }
 }

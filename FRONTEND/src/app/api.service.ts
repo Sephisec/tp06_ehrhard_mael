@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Client } from './models/client';
@@ -26,5 +26,11 @@ export class ApiService {
 
   public getCalague(): Observable<Produit[]> {
     return this.http.get<Produit[]>(environment.backendCatalogue);
+  }
+
+  public filterCatalogue(filter: string): Observable<Produit[]> {
+    const params = new HttpParams();
+    params.set('filter', filter);
+    return this.http.get<Produit[]>(`${environment.backendCatalogue}/filter`, { params });
   }
 }

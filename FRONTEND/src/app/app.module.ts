@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 
 import { ApiService } from './api.service';
 import { ApiHttpInterceptor } from './http-interceptor';
+import { CatalogueComponent } from './catalogue/catalogue.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent],
+  declarations: [AppComponent, CatalogueComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true },
     ApiService,

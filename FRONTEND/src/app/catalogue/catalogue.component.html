@@ -1,0 +1,9 @@
+Bonjour {{ nom }} - {{ prenom }}
+
+<h2>Catalogue produits</h2>
+
+<div *ngIf="produits$ | async as produits">
+  <div *ngFor="let p of produits">
+    <div>{{ p.ref }} - {{ p.titre }} - {{ p.prix }} €</div>
+  </div>
+</div>

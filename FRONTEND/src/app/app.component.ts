@@ -9,13 +9,12 @@ import { Produit } from './models/produit';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Angular';
-  login: string = '';
-  password: string = '';
+  login = '';
+  password = '';
 
-  nom: string = '';
-  prenom: string = '';
-  cnx: boolean = false;
+  nom = '';
+  prenom = '';
+  cnx = false;
   produits$: Observable<Array<Produit>>;
   constructor(private apiService: ApiService) {
     this.produits$ = this.apiService.getCalague();

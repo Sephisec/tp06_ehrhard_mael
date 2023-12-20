@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Client } from './models/client';
 import { Produit } from './models/produit';
-import { environment } from '../environments/environment';
+import {environment} from "../environments/render.environment";
 
 @Injectable()
 export class ApiService {

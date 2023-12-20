@@ -12,7 +12,13 @@ export class CatalogueComponent {
   @Input() nom: string;
   @Input() prenom: string;
   produits$: Observable<Array<Produit>>;
+  searchTerm: string;
 
   constructor(private readonly apiService: ApiService) {
-    this.produits$ = this.apiService.filterCatalogue("");
-  }}
+    this.filterCatalogue("");
+  }
+
+  filterCatalogue(filter: string) {
+    this.produits$ = this.apiService.filterCatalogue(filter);
+  }
+}

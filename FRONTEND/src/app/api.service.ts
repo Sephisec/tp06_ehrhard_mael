@@ -29,8 +29,9 @@ export class ApiService {
   }
 
   public filterCatalogue(filter: string): Observable<Produit[]> {
-    const params = new HttpParams();
-    params.set('filter', filter);
+    let params = new HttpParams();
+    params = params.set('filter', filter);
+    console.log(params);
     return this.http.get<Produit[]>(`${environment.backendCatalogue}/filter`, { params });
   }
 }

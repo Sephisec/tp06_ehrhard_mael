@@ -1,7 +1,7 @@
 Bonjour {{ nom }} - {{ prenom }}
 
 <h2>Catalogue produits</h2>
-
+<input type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterCatalogue(searchTerm)" placeholder="Rechercher un produit">
 <div *ngIf="produits$ | async as produits">
   <div *ngFor="let p of produits">
     <div>{{ p.ref }} - {{ p.titre }} - {{ p.prix }} €</div>

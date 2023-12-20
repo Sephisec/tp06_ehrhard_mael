@@ -15,9 +15,7 @@ export class AppComponent {
   nom = '';
   prenom = '';
   cnx = false;
-  produits$: Observable<Array<Produit>>;
   constructor(private apiService: ApiService) {
-    this.produits$ = this.apiService.getCalague();
   }
   connexion() {
     this.apiService.loginClient(this.login, this.password).subscribe((c) => {
